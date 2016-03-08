@@ -53,6 +53,7 @@ public class Minesweeper {
 		}
 	}
 	 // prints the main message to the screen
+	// no return
 	private static void mainMessage(){
 		System.out.println("Welcome to Minesweeper!");
 		System.out.println("To play just input some coordinates and try not to step ont mine :)");
