@@ -4,8 +4,7 @@ public class Minesweeper {
 	private static MineField field;
 	private static Ranking rank;
 	
-	/**
-	 * main method, starts the program
+	/* main method, starts the program
 	 * @param args takes the standard args array
 	 */
 	public static void main(String[] args) {
@@ -14,8 +13,8 @@ public class Minesweeper {
 		while(gameCountinue());
 		System.out.println("\nThank you for playing :) Have a nice day!");
 	}
-	/**
-	 * handles running of the program
+
+	/* handles running of the program
 	 * @return true if the user wants to restart, false if the user wants to quit
 	 */
 	private static boolean gameCountinue() {
@@ -23,7 +22,6 @@ public class Minesweeper {
 		int result = 0;
 		while (true) {
 			
-			//we have some problems with the scanner here.. 
 			field.show();
 			System.out.print("\nPlease enter your move(row col): ");
 			Scanner s = new Scanner(System.in);
@@ -56,9 +54,7 @@ public class Minesweeper {
 			}
 		}
 	}
-	/**
-	 * prints the main message to the screen
-	 */
+	 // prints the main message to the screen
 	private static void mainMessage(){
 		System.out.println("Welcome to Minesweeper!");
 		System.out.println("To play just input some coordinates and try not to step ont mine :)");
