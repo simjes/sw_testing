@@ -12,12 +12,9 @@ class MineField{
 		mines=new boolean[rowMax][colMax];
 		visible=new boolean[rowMax][colMax];
 		boom=false;
-		for(int row=0;row<rowMax;row++){
-			for(int col=0;col<colMax;col++){
-				mines[row][col]=false;
-				visible[row][col]=false;
-			}
-		}
+
+		initMap();
+
 		int counter2=15;
 		int randomRow,randomCol;
 		Random RGenerator=new Random();
@@ -28,7 +25,21 @@ class MineField{
 				counter2--;
 			}
 		}
-	}	
+	}
+
+	/**
+	* Initialize the map for new game
+	*/
+	private void initMap(){
+		for(int row=0;row<rowMax;row++){
+			for(int col=0;col<colMax;col++){
+				mines[row][col]=false;
+				visible[row][col]=false;
+			}
+		}
+	}
+
+
 	/**
 	 * check if it the move is valid
 	 * @param randomRow random row
