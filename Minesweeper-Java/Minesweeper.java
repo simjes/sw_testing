@@ -22,10 +22,12 @@ public class Minesweeper {
 		field = new MineField();
 		int result = 0;
 		while (true) {
+			
+			//we have some problems with the scanner here.. 
 			field.show();
 			System.out.print("\nPlease enter your move(row col): ");
-			Scanner in = new Scanner(System.in);
-			String input = in.nextLine();
+			Scanner s = new Scanner(System.in);
+			String input = s.nextLine();
 			if (input.equals("top")) {
 				rank.show();
 				continue;
