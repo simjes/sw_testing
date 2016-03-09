@@ -6,7 +6,8 @@ public class Ranking{
 	private String[] name;
 	private int[] record;
 	private int last;
-	
+
+	// constructor. Generates a name array and record array
 	Ranking(){
 		name=new String[MAX_PEOPLE_LIMIT];
 		record=new int[MAX_PEOPLE_LIMIT];
@@ -14,7 +15,8 @@ public class Ranking{
 		last=0;
 	}
 
-
+	// records user name. Handles user input and printing. calles sort() and show() after it is done
+	// @param result takes the result of this player as a param
 	public void recordName(int result) {
 		System.out.print("\n Please enter your name -");
 		Scanner in=new Scanner(System.in);
@@ -41,6 +43,7 @@ public class Ranking{
 	}
 
 
+	// prints the result to the screen
 	public void show() {
 		if(last==0){
 			System.out.println("Still no results");
@@ -53,6 +56,7 @@ public class Ranking{
 	}
 	
 	
+	//sorts the name and record array according to who is leading right now
 	private void sort(){
 		if(last<2) return;
 		boolean unsorted=true;
