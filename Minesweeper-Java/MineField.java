@@ -86,7 +86,7 @@ class MineField{
 			}
 			return '?';
 		}
-		if(count < 9) return "" + count;
+		if(count < 9) return (char) (count+48);
 		
 		return 'X';
 	}
