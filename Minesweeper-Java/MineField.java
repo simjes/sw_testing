@@ -73,13 +73,7 @@ class MineField{
 		int count=0;
 		if(visible[row][col]){
 			if(mines[row][col]) return '*';
-			for(int irow=row-1;irow<=row+1;irow++){
-				for(int icol=col-1;icol<=col+1;icol++){
-					if(icol>=0&&icol<colMax&&irow>=0&&irow<rowMax){
-						if(mines[irow][icol]) count++;
-					}
-				}
-			}
+			count = increaseCount(row, col, count);
 		}
 		else{
 			if(boom){
@@ -90,6 +84,18 @@ class MineField{
 		//edited from original solution. This one saves a couple of lines
 		if(count < 9) return (char) (count+48);
 		else return 'X';
+	}
+
+
+	private int increaseCount(int row, int col, int count) {
+		for(int irow=row-1;irow<=row+1;irow++){
+			for(int icol=col-1;icol<=col+1;icol++){
+				if(icol>=0&&icol<colMax&&irow>=0&&irow<rowMax){
+					if(mines[irow][icol]) count++;
+				}
+			}
+		}
+		return count;
 	}
 	 // returns current boom status
 	public boolean getBoom(){
