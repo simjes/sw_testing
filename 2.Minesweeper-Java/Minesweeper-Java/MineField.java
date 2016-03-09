@@ -79,38 +79,34 @@ class MineField{
 		int count=0;
 		if(visible[row][col]){
 			if(mines[row][col]) return '*';
-			for(int irow=row-1;irow<=row+1;irow++){
-				for(int icol=col-1;icol<=col+1;icol++){
-					if(icol>=0&&icol<colMax&&irow>=0&&irow<rowMax){
-						if(mines[irow][icol]) count++;
-					}
-				}
-			}
-		}
-		else{
+			count = increaseCount(row, col);
+		}else{
 			if(boom){
 				return '-';
 			}
-			{
-				
-				
-				return '?';
+			return '?';
+		}
+		if(count < 9) return "" + count;
+		
+		return 'X';
+	}
+
+	/** 
+	*Check number of mines that is surrounding the current cell 
+	*@param row the row number
+	*@param col the coloum number
+	*@return int the number of bombs surrounding current cell
+	*/
+	private int increaseCount(int row, int col) {
+		int count = 0;		
+		for(int irow=row-1;irow<=row+1;irow++){
+			for(int icol=col-1;icol<=col+1;icol++){
+				if(icol>=0&&icol<colMax&&irow>=0&&irow<rowMax){
+					if(mines[irow][icol]) count++;
+				}
 			}
 		}
-		switch(count){
-		case 0:return '0';
-		case 1:return '1';
-		case 2:return '2';
-		case 3:return '3';
-		case 4:return '4';
-		case 5:return '5';
-		case 6:return '6';
-		case 7:return '7';
-		case 8:return '8';
-		
-		
-		default:return 'X';
-		}
+		return count;
 	}
 
 	// returns current boom status
@@ -127,27 +123,18 @@ class MineField{
 		int row;
 		int col;
 		try{
-			
-			
 			row=Integer.parseInt(separated[0]);
 			col=Integer.parseInt(separated[1]);
 			if(row<0||col<0||row>=rowMax||col>=colMax){
 				throw new java.io.IOException();
 			}
-		}
-		catch(Exception e){
+		}catch(Exception e){
 			System.out.println("\nInvalid Input!");
 			return false;
 		}
 		
-		if(legalMoveValue(row,col)){
-			return true;
-			
-			
-		}
-		else{
-			return false;
-		}
+		return legalMoveValue(row, col);
+		
 	}
 
 	// handles the values given by the user. Sets the position to visible and checks for mines

@@ -9,9 +9,8 @@ public class Ranking{
 
 	// constructor. Generates a name array and record array
 	Ranking(){
-		name=new String[MAX_PEOPLE_LIMIT];
-		record=new int[MAX_PEOPLE_LIMIT];
-		
+		name = new String[MAX_PEOPLE_LIMIT];
+		record = new int[MAX_PEOPLE_LIMIT];
 		last=0;
 	}
 
@@ -19,25 +18,22 @@ public class Ranking{
 	// @param result takes the result of this player as a param
 	public void recordName(int result) {
 		System.out.print("\n Please enter your name -");
-		Scanner in=new Scanner(System.in);
+		Scanner in= new Scanner(System.in);
 		String newName=in.nextLine();
 		if((last==MAX_PEOPLE_LIMIT)&&record[MAX_PEOPLE_LIMIT-1]>result){
 			System.out.println("\nSorry you cannot enter top "+(MAX_PEOPLE_LIMIT)+" players");
 			return;
 		}
 		else if(last==MAX_PEOPLE_LIMIT){
-			name[MAX_PEOPLE_LIMIT-1]=newName;{
-				record[MAX_PEOPLE_LIMIT-1]=result;
-			}
+			name[MAX_PEOPLE_LIMIT-1]= newName;
+			record[MAX_PEOPLE_LIMIT-1]= result;
 		}
 		else{
-			name[last]=newName;{
-				record[last]=result;{
-					last++;
-				}
-			}
+			name[last]= newName;
+			record[last]=result;
+			last++;
 		}
-		
+
 		sort();
 		show();
 	}
@@ -55,7 +51,15 @@ public class Ranking{
 		}
 	}
 	
-	
+	private void swap(int i){
+		int swapR=record[i];
+		record[i]=record[i+1];
+		record[i+1]=swapR;
+		String swapN=name[i];
+		name[i]=name[i+1];
+		name[i+1]=swapN;
+	}
+
 	//sorts the name and record array according to who is leading right now
 	private void sort(){
 		if(last<2) return;
@@ -64,15 +68,8 @@ public class Ranking{
 			unsorted=false;
 			for(int i=0;i<(last-1);i++){
 				if(record[i+1]>record[i]){
-					int swapR=record[i];{
-						record[i]=record[i+1];{
-							record[i+1]=swapR;
-							String swapN=name[i];
-							name[i]=name[i+1];
-							name[i+1]=swapN;
-							unsorted=true;
-						}
-					}
+					swap(i);			
+					unsorted=true;
 				}
 			}
 		}
